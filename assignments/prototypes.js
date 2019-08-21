@@ -110,12 +110,36 @@ Car.prototype.drive = function(distanceDriven){
   if(this.canBeDriven === true) return this.odometer += Number(distanceDriven);
 }
 Car.prototype.crash = function(){
+  // Make car undrive-able, as it it's just been crahsed!
   this.canBeDriven = false;
   return `I crahsed ${this.odometer} miles!`;
 }
 Car.prototype.repair = function(){
+  //restore car'r drivability.
   this.canBeDriven = true;
 }
+
+
+//TASK 3
+function Baby(name, age, favoriteToy) {
+  Person.call(this, name, age);
+  this.favoriteToy = favoriteToy;
+}
+
+Baby.prototype = Object.create(Person.prototype);
+
+// add ability for baby's to play
+Baby.prototype.play = function () {
+  return `I am playing with my ${this.favoriteToy}`;
+}
+
+var sonny = new Baby('Tom', 5, 'bicycle');
+console.log(sonny.greet());
+console.log(sonny.play());
+
+
+
+
 /*
 
   STRETCH TASK
