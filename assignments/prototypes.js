@@ -65,6 +65,8 @@
 
   TASK 4
 
+
+  
   Use your imagination and come up with constructors that allow to build objects
   With amazing and original capabilities. Build 3 small ones, or a very
   complicated one with lots of state. Surprise us!
@@ -73,7 +75,7 @@
 
 // Solutions to TASKS 1 - 4
 
-//TASK 1:
+//****** */TASK 1: **********/
 function Person (name, age) {
   this.name = name;
   this.age = age;
@@ -96,7 +98,7 @@ var Tope = new Person("Temitope", 33);
 // //console.log(Tope.poop("rice"));
 // console.log(Tope);
 
-//TASK 2
+//************ */TASK 2 **********/
 function Car (model, name, make) {
   this.carModel = model;
   this.carName = name;
@@ -125,7 +127,7 @@ var firstCar = new Car("CAMRY", "MUSCLE", "TOYOTA");
 // console.log(firstCar.repair());
 
 
-//TASK 3
+//********** */TASK 3************/
 function Baby(name, age, favoriteToy) {
   Person.call(this, name, age);
   this.favoriteToy = favoriteToy;
@@ -142,6 +144,48 @@ var sonny = new Baby('Tom', 5, 'bicycle');
 console.log(sonny.greet());
 console.log(sonny.play());
 
+//*********** */TASK 4***********/
+//first constructor function
+function Fruit (fruitName, fruitType, fruitRating) {
+  this.name = fruitName;
+  this.type = fruitType;
+  this.rating = Number(fruitRating);
+  isTasty = false;
+}
+
+Fruit.prtototype.eatFruit = function(){
+  if (this.name === "banana") return `${this.fruit} is very TASTY!`;
+}
+
+var newFruit = new Fruit("banana", "berry", 30);
+
+
+//second constructor function
+function Students (nameOfStudent, ageOfStudent, scoreOfStudent) {
+  this.studentName = nameOfStudent;
+  this.studentAge = Number(ageOfStudent);
+  this.studentScore = scoreOfStudent;
+  this.isPromoted = false;
+}
+
+Students.prototype.writeExam() = function(){
+  if(this.studentScore > 70){
+    isPromoted = true;
+    return `Congratulations ${this.studentName}, You passed your exam`;
+  } 
+}
+
+var student1 = new Students("Samuel", 22, 75);
+console.log(student1.writeExam());
+
+
+//second constructor function
+function Employee(name, educationStatus, workExperience){
+  this.employeeName = name;
+  this.employeeEducationStatus = educationStatus;
+  this.employeeWorkExperience = workExperience;  
+}
+
 
 
 /*
@@ -155,6 +199,7 @@ console.log(sonny.play());
   Each constructor function has unique properties and methods that are defined in their block comments below:
 */
 
+
 /*
   === GameObject ===
   * createdAt
@@ -163,12 +208,29 @@ console.log(sonny.play());
   * destroy() // prototype method that returns: `${this.name} was removed from the game.`
 */
 
+function GameObject() {
+  this.createdAt = createdAt;
+  this.name = name;
+  this.dimensions = dimensions;
+}
+  
+GameObject.prototype.destroy = function() {
+  return `${this.name} was removed from the game.`;
+}
+
 /*
   === CharacterStats ===
   * healthPoints
   * takeDamage() // prototype method -> returns the string '<object name> took damage.'
   * should inherit destroy() from GameObject's prototype
 */
+function CharacterStats() {
+  this.healthPoints = healthPoints; 
+}
+  
+CharacterStats.prototype.takeDamage = function() {
+  return `${this.name} was removed from the game.`;
+}
 
 /*
   === Humanoid (Having an appearance or character resembling that of a human.) ===
@@ -179,6 +241,15 @@ console.log(sonny.play());
   * should inherit destroy() from GameObject through CharacterStats
   * should inherit takeDamage() from CharacterStats
 */
+function Humanoid() {
+  this.team = team;
+  this.weapons = weapons;
+  this.language = language;
+}
+  
+Humanoid.prototype.greet = function() {
+  return `${this.name} was removed from the game.`;
+}
 
 /*
   * Inheritance chain: GameObject -> CharacterStats -> Humanoid
@@ -247,3 +318,4 @@ console.log(sonny.play());
   console.log(mage.takeDamage()); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
 */
+
