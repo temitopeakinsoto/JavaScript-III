@@ -102,25 +102,20 @@ function Car (model, name, make) {
   this.carName = name;
   this.carMake = make;
   this.odometer = 0;
-
-  // Build a Car constructor that takes model name and make.
-  // - Give cars the ability to drive a distance.
-  // - By driving a car, the distance driven should be added to an "odometer" property.
-  // - Give cars the ability to crash.
-  // - A crashed car can't be driven any more. Attempts return a string "I crashed at x miles!", x being the miles in the odometer.
-  // - Give cars the ability to be repaired.
-  // - A repaired car can be driven again.
-
+  this.canBeDriven = true;
 }
 var firstCar = new Car("CAMRY", "MUSCLE", "TOYOTA");
 console.log(firstCar);
 Car.prototype.drive = function(distanceDriven){
-  return this.odometer += Number(distanceDriven);
+  if(this.canBeDriven === true) return this.odometer += Number(distanceDriven);
 }
 Car.prototype.crash = function(){
+  this.canBeDriven = false;
   return `I crahsed ${this.odometer} miles!`;
 }
-
+Car.prototype.repair = function(){
+  this.canBeDriven = true;
+}
 /*
 
   STRETCH TASK
