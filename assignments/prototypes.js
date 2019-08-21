@@ -101,6 +101,7 @@ function Car (model, name, make) {
   this.carModel = model;
   this.carName = name;
   this.carMake = make;
+  this.odometer = 0;
 
   // Build a Car constructor that takes model name and make.
   // - Give cars the ability to drive a distance.
@@ -113,6 +114,12 @@ function Car (model, name, make) {
 }
 var firstCar = new Car("CAMRY", "MUSCLE", "TOYOTA");
 console.log(firstCar);
+Car.prototype.drive = function(distanceDriven){
+  return this.odometer += Number(distanceDriven);
+}
+Car.prototype.crash = function(){
+  return `I crahsed ${this.odometer} miles!`;
+}
 
 /*
 
