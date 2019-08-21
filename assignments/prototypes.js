@@ -71,6 +71,17 @@
 
 */
 
+// Solutions to TASKS 1 - 4
+
+//TASK 1:
+function Person (name, age) {
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
+}
+//var Tope = new Person("Temitope", 33);
+//console.log(Tope);
+
 /*
 
   STRETCH TASK
