@@ -79,18 +79,40 @@ function Person (name, age) {
   this.age = age;
   this.stomach = [];
 }
-//var Tope = new Person("Temitope", 33);
-//console.log(Tope);
+
 Person.prototype.greet = function(){
   return `Hello, my name is ${this.name}, I am ${this.age} years old`;
 }
 Person.prototype.eatEdibles = function(food){
-  return this.stomach.push(item);
+ this.stomach.push(food);
 }
 Person.prototype.poop = function(){
   return this.stomach.pop();
 }
 
+var Tope = new Person("Temitope", 33);
+// console.log(Tope);
+// console.log(Tope.eatEdibles("rice"));
+// //console.log(Tope.poop("rice"));
+// console.log(Tope);
+
+//TASK 2
+function Car (model, name, make) {
+  this.carModel = model;
+  this.carName = name;
+  this.carMake = make;
+
+  // Build a Car constructor that takes model name and make.
+  // - Give cars the ability to drive a distance.
+  // - By driving a car, the distance driven should be added to an "odometer" property.
+  // - Give cars the ability to crash.
+  // - A crashed car can't be driven any more. Attempts return a string "I crashed at x miles!", x being the miles in the odometer.
+  // - Give cars the ability to be repaired.
+  // - A repaired car can be driven again.
+
+}
+var firstCar = new Car("CAMRY", "MUSCLE", "TOYOTA");
+console.log(firstCar);
 
 /*
 
