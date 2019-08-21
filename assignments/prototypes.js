@@ -104,10 +104,9 @@ function Car (model, name, make) {
   this.odometer = 0;
   this.canBeDriven = true;
 }
-var firstCar = new Car("CAMRY", "MUSCLE", "TOYOTA");
-console.log(firstCar);
+
 Car.prototype.drive = function(distanceDriven){
-  if(this.canBeDriven === true) return this.odometer += Number(distanceDriven);
+  if(this.canBeDriven === true) this.odometer += Number(distanceDriven);
 }
 Car.prototype.crash = function(){
   // Make car undrive-able, as it it's just been crahsed!
@@ -118,6 +117,12 @@ Car.prototype.repair = function(){
   //restore car'r drivability.
   this.canBeDriven = true;
 }
+var firstCar = new Car("CAMRY", "MUSCLE", "TOYOTA");
+
+// firstCar.drive(25);
+// console.log(firstCar.crash());
+// console.log(firstCar);
+// console.log(firstCar.repair());
 
 
 //TASK 3
@@ -136,7 +141,6 @@ Baby.prototype.play = function () {
 var sonny = new Baby('Tom', 5, 'bicycle');
 console.log(sonny.greet());
 console.log(sonny.play());
-
 
 
 
