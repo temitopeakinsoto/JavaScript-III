@@ -81,6 +81,16 @@ function Person (name, age) {
 }
 //var Tope = new Person("Temitope", 33);
 //console.log(Tope);
+Person.prototype.greet = function(){
+  return `Hello, my name is ${this.name}, I am ${this.age} years old`;
+}
+Person.prototype.eatEdibles = function(food){
+  return this.stomach.push(item);
+}
+Person.prototype.poop = function(){
+  return this.stomach.pop();
+}
+
 
 /*
 
