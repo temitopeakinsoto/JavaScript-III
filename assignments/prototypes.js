@@ -65,8 +65,6 @@
 
   TASK 4
 
-
-  
   Use your imagination and come up with constructors that allow to build objects
   With amazing and original capabilities. Build 3 small ones, or a very
   complicated one with lots of state. Surprise us!
@@ -89,14 +87,15 @@ Person.prototype.eatEdibles = function(food){
  this.stomach.push(food);
 }
 Person.prototype.poop = function(){
-  return this.stomach.pop();
+  this.stomach.pop();
 }
 
-var Tope = new Person("Temitope", 33);
-// console.log(Tope);
-// console.log(Tope.eatEdibles("rice"));
-// //console.log(Tope.poop("rice"));
-// console.log(Tope);
+// var Tope = new Person("Temitope", 33);
+//  console.log(Tope);
+//  Tope.eatEdibles("rice");
+//  console.log(Tope.stomach)//["rice"];
+//  Tope.poop("rice");
+//  console.log(Tope.stomach);//[] empty array
 
 //************ */TASK 2 **********/
 function Car (model, name, make) {
@@ -113,18 +112,20 @@ Car.prototype.drive = function(distanceDriven){
 Car.prototype.crash = function(){
   // Make car undrive-able, as it it's just been crahsed!
   this.canBeDriven = false;
-  return `I crahsed ${this.odometer} miles!`;
+  console.log(`I crahsed ${this.odometer} miles!`);
 }
 Car.prototype.repair = function(){
   //restore car'r drivability.
   this.canBeDriven = true;
 }
-var firstCar = new Car("CAMRY", "MUSCLE", "TOYOTA");
 
-// firstCar.drive(25);
-// console.log(firstCar.crash());
-// console.log(firstCar);
-// console.log(firstCar.repair());
+//var firstCar = new Car("CAMRY", "MUSCLE", "TOYOTA");
+//firstCar.drive(29);
+//console.log(firstCar.odometer);
+//firstCar.crash();//sets canBeDriven = false
+//console.log(firstCar.crash());
+//console.log(firstCar);
+//console.log(firstCar.repair());
 
 
 //********** */TASK 3************/
@@ -140,9 +141,10 @@ Baby.prototype.play = function () {
   return `I am playing with my ${this.favoriteToy}`;
 }
 
-var sonny = new Baby('Tom', 5, 'bicycle');
-console.log(sonny.greet());
-console.log(sonny.play());
+//var sonny = new Baby('Tom', 5, 'bicycle');
+//console.log(sonny.greet());
+//console.log(sonny.play());
+
 
 //*********** */TASK 4***********/
 //first constructor function
@@ -153,11 +155,12 @@ function Fruit (fruitName, fruitType, fruitRating) {
   isTasty = false;
 }
 
-Fruit.prtototype.eatFruit = function(){
-  if (this.name === "banana") return `${this.fruit} is very TASTY!`;
+Fruit.prototype.eatFruit = function(){
+  return `${this.name} is very TASTY!`;
 }
+//var newFruit = new Fruit("banana", "berry", 30);
+//console.log(newFruit.eatFruit());
 
-var newFruit = new Fruit("banana", "berry", 30);
 
 
 //second constructor function
@@ -168,23 +171,36 @@ function Students (nameOfStudent, ageOfStudent, scoreOfStudent) {
   this.isPromoted = false;
 }
 
-Students.prototype.writeExam() = function(){
+Students.prototype.writeExam = function(){
   if(this.studentScore > 70){
-    isPromoted = true;
+    this.isPromoted = true;
     return `Congratulations ${this.studentName}, You passed your exam`;
   } 
 }
 
 var student1 = new Students("Samuel", 22, 75);
-console.log(student1.writeExam());
+//console.log(student1.writeExam());
+//console.log(student1.isPromoted);
 
 
-//second constructor function
+//third constructor function
 function Employee(name, educationStatus, workExperience){
   this.employeeName = name;
   this.employeeEducationStatus = educationStatus;
   this.employeeWorkExperience = workExperience;  
+  this.isExperienced = false;
 }
+
+Employee.prototype.getLevelOfExperien = function() {
+  if(this.employeeWorkExperience > 0){
+    this.isExperienced = true;
+    return (`You have ${this.employeeWorkExperience}yr work  experience`);
+  }
+  return isExperienced = false;
+}
+const intern = new Employee("newGuy", "b.sc", 1);
+//console.log(intern);
+console.log(intern.getLevelOfExperien());
 
 
 
@@ -208,7 +224,7 @@ function Employee(name, educationStatus, workExperience){
   * destroy() // prototype method that returns: `${this.name} was removed from the game.`
 */
 
-function GameObject() {
+function GameObject(createdAt, name, dimensions) {
   this.createdAt = createdAt;
   this.name = name;
   this.dimensions = dimensions;
@@ -224,14 +240,18 @@ GameObject.prototype.destroy = function() {
   * takeDamage() // prototype method -> returns the string '<object name> took damage.'
   * should inherit destroy() from GameObject's prototype
 */
-function CharacterStats() {
+function CharacterStats(healthPoints) {  
+  GameObject.call(this, healthPoints);
   this.healthPoints = healthPoints; 
+  console.log(this);
 }
   
 CharacterStats.prototype.takeDamage = function() {
-  return `${this.name} was removed from the game.`;
+  return `${this.name} took damage.`;
 }
 
+var some = CharacterStats(20);
+some.takeDamage();
 /*
   === Humanoid (Having an appearance or character resembling that of a human.) ===
   * team
@@ -245,10 +265,11 @@ function Humanoid() {
   this.team = team;
   this.weapons = weapons;
   this.language = language;
+  CharacterStats.call()
 }
   
 Humanoid.prototype.greet = function() {
-  return `${this.name} was removed from the game.`;
+  return `${this.name} offers a greeting in ${this.language}`;
 }
 
 /*

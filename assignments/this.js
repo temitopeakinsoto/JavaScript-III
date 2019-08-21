@@ -24,7 +24,7 @@ function greet(name) {
     console.log('Hello ' + name);
     console.log(this); // refers to window object
 }
-greet('Temi');
+//greet('Temi');
 
 // Principle 2
 
@@ -36,7 +36,7 @@ var greet = {
         console.log(this);// refers to greet method
     }
 }
-greet.speak('Temi');
+//greet.speak('Temi');
 
 
 
@@ -55,8 +55,8 @@ function Greet(name) {
 var greetTemi = new Greet('Temi');
 var greetTope = new Greet('Tope');
 
-greetTemi.speak();
-greetTope.speak();
+//greetTemi.speak();
+//greetTope.speak();
 
 // Principle 4
 //The this 
